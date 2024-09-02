@@ -7,7 +7,7 @@ export type UserProps = {
 
 export class UserEntity {
   constructor(public readonly props: UserProps) {
-    this.props.createdAt = this.props.createdAt || new Date()
+    this.props.createdAt = this.props.createdAt ?? new Date()
   }
 
   get name(): string {
