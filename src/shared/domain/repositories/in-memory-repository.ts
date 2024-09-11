@@ -11,7 +11,7 @@ export abstract class InMemoryRepository<E extends Entity>
     this.items.push(entity)
   }
 
-  async findBiId(id: string): Promise<E> {
+  async findById(id: string): Promise<E> {
     return this._get(id)
   }
 
