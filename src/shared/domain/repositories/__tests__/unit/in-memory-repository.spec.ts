@@ -1,3 +1,4 @@
+import { NotFoundError } from '@/shared/domain/errors/not-found-error'
 import { Entity } from '../../../entities/entity'
 import { InMemoryRepository } from '../../in-memory-repository'
 
@@ -21,5 +22,18 @@ describe('InMemoryRepository', () => {
     const entity = new StubEntity({ name: 'any_name', price: 10 })
     await sut.insert(entity)
     expect(entity.toJSON()).toStrictEqual(sut.items[0].toJSON())
+  })
+
+  it('Should throw error when entity not found', async () => {
+    expect(sut.findById('fakeId')).rejects.toThrow(
+      new NotFoundError('Entity not found'),
+    )
+  })
+
+  it('Should find entity by id', async () => {
+    const entity = new StubEntity({ name: 'any_name', price: 10 })
+    await sut.insert(entity)
+    const result = await sut.findById(entity._id)
+    expect(entity.toJSON()).toStrictEqual(result.toJSON())
   })
 })
