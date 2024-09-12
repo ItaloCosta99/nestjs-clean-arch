@@ -1,4 +1,8 @@
 {
   "cSpell.language": "en",
-  "cSpell.enabled": false
+  "cSpell.enabled": true,
+  "cSpell.ignoreWords": [
+    "fastify",
+    "nestjs"
+  ]
 }
