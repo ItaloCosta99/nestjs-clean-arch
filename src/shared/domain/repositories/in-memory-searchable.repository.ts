@@ -23,7 +23,6 @@ export abstract class InMemorySearchableRepository<E extends Entity>
       itemsSorted,
       props.page,
       props.perPage,
-      props.sortDir,
     )
 
     return new SearchResult({
@@ -66,7 +65,6 @@ export abstract class InMemorySearchableRepository<E extends Entity>
     items: E[],
     page: SearchParams['page'],
     perPage: SearchParams['perPage'],
-    sortDir: string | null,
   ): Promise<E[]> {
     const start = (page - 1) * perPage
     const end = start + perPage
